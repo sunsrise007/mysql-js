@@ -6,13 +6,22 @@ const app = express();
 const port = 3000;
 
 // MySQL bağlantı havuzu
-const pool = mysql.createPool({
+const pool1 = mysql.createPool({
   host: 'mupeks.com',
   user: 'mupeksco_data',
   password: '664Gmm//*/',
   database: 'mupeksco_data',
   port: 3306
 });
+
+// MySQL bağlantı havuzu for sarem
+const pool = mysql.createPool({
+    host: 'saremelektromekanik.com',
+    user: 'saremele_data',
+    password: '664Gmm//*/',
+    database: 'saremele_data',
+    port: 3306
+  });
 
 // Bağlantı havuzunu kontrol et
 pool.getConnection((err, connection) => {
@@ -235,6 +244,6 @@ app.post('/delete-data', (req, res) => {
 
 
 // Sunucuyu başlat
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(port, '0.0.0.0',() => {
+  console.log(`Server is running on http://allipaddresses from this port  ${port}`);
 });
